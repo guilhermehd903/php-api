@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Se for arquivo real, não reescreve
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Se for diretório real, não reescreve
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Tudo que não existir vai para index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
